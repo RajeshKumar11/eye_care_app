@@ -1,0 +1,52 @@
+name: eye_care_app
+description: "A cross-platform Eye Care application for Mobile & Desktop with blink reminders, blank screen mode, and eye training exercises."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  provider: ^6.1.1
+
+  # Desktop Window Management
+  window_manager: ^0.3.8
+
+  # System Tray for Desktop
+  tray_manager: ^0.2.1
+
+  # Text-to-Speech (disabled - causes Windows build issues with ATL headers)
+  # flutter_tts: ^3.8.5
+  # TTS functionality uses stub implementation on all platforms for now
+
+  # Local Storage
+  shared_preferences: ^2.2.2
+
+  # Local Notifications
+  flutter_local_notifications: ^17.0.0
+
+  # Wakelock to prevent screen from sleeping during exercises
+  wakelock_plus: ^1.1.4
+
+  # Timezone for scheduled notifications
+  timezone: ^0.9.4
+
+  # System overlay window to show on top of other apps
+  flutter_overlay_window: ^0.4.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
