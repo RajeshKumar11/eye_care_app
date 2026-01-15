@@ -1,0 +1,34 @@
+# Code Owners for Eye Care App
+#
+# These owners will be automatically requested for review when someone opens a PR
+# that modifies code in their area.
+
+# Default owner for everything in the repo
+* @RajeshKumar11
+
+# Documentation
+*.md @RajeshKumar11
+/docs/ @RajeshKumar11
+
+# Core application code
+/lib/ @RajeshKumar11
+
+# Android platform
+/android/ @RajeshKumar11
+
+# iOS platform
+/ios/ @RajeshKumar11
+
+# GitHub workflows and CI/CD
+/.github/ @RajeshKumar11
+
+# Tests
+/test/ @RajeshKumar11
+
+# Configuration files
+pubspec.yaml @RajeshKumar11
+analysis_options.yaml @RajeshKumar11
+
+# Security-sensitive files
+SECURITY.md @RajeshKumar11
+/android/app/build.gradle.kts @RajeshKumar11

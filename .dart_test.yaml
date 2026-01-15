@@ -1,0 +1,43 @@
+# Dart test configuration for Eye Care App
+
+# Test runner configuration
+concurrency: 4
+
+# Test timeout
+timeout: 30s
+
+# Platform configuration
+platforms:
+  - vm
+  - chrome
+
+# Test file patterns
+file_selectors:
+  test:
+    - test/**/*_test.dart
+
+# Test tags
+tags:
+  unit:
+    description: Unit tests for business logic
+  widget:
+    description: Widget tests for UI components
+  integration:
+    description: Integration tests
+  slow:
+    description: Tests that take longer to run
+    timeout: 60s
+
+# Coverage configuration
+coverage:
+  exclude:
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/main.dart'
+    - 'test/**'
+
+# Reporter configuration
+reporter: expanded
+
+# Retry flaky tests
+retry: 2

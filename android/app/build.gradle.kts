@@ -30,9 +30,55 @@ android {
         multiDexEnabled = true
     }
 
+    signingConfigs {
+        // Debug signing config (for development)
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+
+        // Release signing config (load from key.properties if available)
+        create("release") {
+            val keystorePropertiesFile = rootProject.file("key.properties")
+            if (keystorePropertiesFile.exists()) {
+                val keystoreProperties = java.util.Properties()
+                keystoreProperties.load(java.io.FileInputStream(keystorePropertiesFile))
+
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
-        release {
+        debug {
             signingConfig = signingConfigs.getByName("debug")
+        }
+
+        release {
+            // Use release signing if key.properties exists, otherwise fall back to debug
+            val keystorePropertiesFile = rootProject.file("key.properties")
+            signingConfig = if (keystorePropertiesFile.exists()) {
+                signingConfigs.getByName("release")
+            } else {
+                // Fallback to debug signing for development
+                // WARNING: Do NOT publish to Play Store with debug signing!
+                println("WARNING: key.properties not found. Using debug signing for release build.")
+                println("This is only suitable for testing. See android/SIGNING_GUIDE.md for production setup.")
+                signingConfigs.getByName("debug")
+            }
+
+            // Enable code shrinking and obfuscation for release builds
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }

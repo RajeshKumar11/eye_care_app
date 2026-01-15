@@ -1,11 +1,11 @@
 {
-    "name": "eye_care_app",
-    "short_name": "eye_care_app",
+    "name": "Eye Care App - Protect Your Vision",
+    "short_name": "Eye Care",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#2196F3",
+    "theme_color": "#2196F3",
+    "description": "A cross-platform eye care application that helps reduce eye strain through blink reminders, screen rest periods, and guided eye exercises. Protect your vision from digital eye strain.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
