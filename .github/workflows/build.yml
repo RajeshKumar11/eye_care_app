@@ -42,7 +42,7 @@ jobs:
         run: flutter build apk --release
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: android-apk
           path: build/app/outputs/flutter-apk/*.apk
@@ -74,7 +74,7 @@ jobs:
           echo "Note: Code signing required for distribution" >> ios-build-info.txt
 
       - name: Upload iOS build info
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ios-build-info
           path: ios-build-info.txt
@@ -101,7 +101,7 @@ jobs:
         run: flutter build web --release
 
       - name: Upload Web build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: web-build
           path: build/web
@@ -133,7 +133,7 @@ jobs:
           echo "Executable location: build/windows/runner/Release/" >> windows-build-info.txt
 
       - name: Upload Windows build info
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: windows-build-info
           path: windows-build-info.txt
@@ -170,7 +170,7 @@ jobs:
           tar -czf ../../../../../eye-care-app-linux.tar.gz *
 
       - name: Upload Linux build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: linux-build
           path: eye-care-app-linux.tar.gz
@@ -202,7 +202,7 @@ jobs:
           echo "App location: build/macos/Build/Products/Release/eye_care_app.app" >> macos-build-info.txt
 
       - name: Upload macOS build info
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: macos-build-info
           path: macos-build-info.txt
