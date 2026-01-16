@@ -4,16 +4,30 @@ import '../models/settings_model.dart';
 import '../services/notification_service.dart';
 import '../services/tts_service.dart';
 import '../services/background_service.dart';
+import '../services/window_service.dart';
 import '../utils/platform_utils.dart';
+import '../utils/app_logger.dart';
 
-/// Main provider for eye care functionality
+/// Main provider for eye care functionality.
+///
+/// Manages blink reminders and blank screen rest periods.
+/// Handles both foreground overlays and background notifications.
+///
+/// Example:
+/// ```dart
+/// final provider = context.read<EyeCareProvider>();
+/// await provider.initialize();
+/// await provider.startService(settings);
+/// ```
 class EyeCareProvider extends ChangeNotifier {
   final NotificationService _notificationService = NotificationService();
   final TtsService _ttsService = TtsService();
   final BackgroundService _backgroundService = BackgroundService();
+  final WindowService _windowService = WindowService();
 
   Timer? _blinkTimer;
   Timer? _blankScreenTimer;
+  Timer? _blankScreenCountdownTimer; // Track countdown timer to prevent leaks
 
   bool _isServiceRunning = false;
   bool _showBlinkOverlay = false;
@@ -34,26 +48,38 @@ class EyeCareProvider extends ChangeNotifier {
   VoidCallback? onBlankScreenStart;
   VoidCallback? onBlankScreenEnd;
 
+  /// Initialize the eye care service.
+  ///
+  /// Must be called before [startService].
   Future<void> initialize() async {
-    await _notificationService.initialize();
-    await _ttsService.initialize();
-    await _backgroundService.initialize();
+    AppLogger.serviceInit('EyeCareProvider');
+    try {
+      await _notificationService.initialize();
+      await _ttsService.initialize();
+      await _backgroundService.initialize();
 
-    // Register notification tap callbacks to show overlay when user taps notification
-    _notificationService.onBlinkReminderTapped = () {
-      if (_currentSettings != null) {
-        triggerBlinkReminder(_currentSettings!.blankScreenDurationSeconds);
-      }
-    };
+      // Register notification tap callbacks to show overlay when user taps notification
+      _notificationService.onBlinkReminderTapped = () {
+        if (_currentSettings != null) {
+          triggerBlinkReminder(_currentSettings!.blankScreenDurationSeconds);
+        }
+      };
 
-    _notificationService.onBlankScreenTapped = () {
-      if (_currentSettings != null) {
-        triggerBlankScreen(_currentSettings!.blankScreenDurationSeconds);
-      }
-    };
+      _notificationService.onBlankScreenTapped = () {
+        if (_currentSettings != null) {
+          triggerBlankScreen(_currentSettings!.blankScreenDurationSeconds);
+        }
+      };
+      AppLogger.info('EyeCareProvider initialized successfully');
+    } catch (e, stackTrace) {
+      AppLogger.error('Failed to initialize EyeCareProvider', error: e, stackTrace: stackTrace);
+      rethrow;
+    }
   }
 
+  /// Start the eye care service with the given settings.
   Future<void> startService(EyeCareSettings settings) async {
+    AppLogger.userAction('Start eye care service');
     _currentSettings = settings;
 
     // Start foreground timers (for when app is open - shows full screen overlay)
@@ -70,11 +96,16 @@ class EyeCareProvider extends ChangeNotifier {
     }
 
     _isServiceRunning = true;
+    AppLogger.stateChange('EyeCareProvider', 'Service started');
     notifyListeners();
   }
 
+  /// Stop the eye care service.
   Future<void> stopService() async {
+    AppLogger.userAction('Stop eye care service');
     _stopForegroundTimers();
+    _blankScreenCountdownTimer?.cancel();
+    _blankScreenCountdownTimer = null;
 
     // Stop background notifications
     if (PlatformUtils.isAndroid) {
@@ -85,6 +116,9 @@ class EyeCareProvider extends ChangeNotifier {
     await _notificationService.cancelAllNotifications();
 
     _isServiceRunning = false;
+    _showBlinkOverlay = false;
+    _showBlankScreen = false;
+    AppLogger.stateChange('EyeCareProvider', 'Service stopped');
     notifyListeners();
   }
 
@@ -112,7 +146,7 @@ class EyeCareProvider extends ChangeNotifier {
     if (settings.blinkReminderEnabled) {
       _blinkTimer = Timer.periodic(
         Duration(seconds: settings.blinkIntervalSeconds),
-        (_) => triggerBlinkReminder(settings.blankScreenDurationSeconds),
+        (_) => _handleBlinkReminderTimer(settings.blankScreenDurationSeconds),
       );
     }
 
@@ -120,9 +154,39 @@ class EyeCareProvider extends ChangeNotifier {
     if (settings.blankScreenEnabled) {
       _blankScreenTimer = Timer.periodic(
         Duration(minutes: settings.blankScreenIntervalMinutes),
-        (_) => triggerBlankScreen(settings.blankScreenDurationSeconds),
+        (_) => _handleBlankScreenTimer(settings.blankScreenDurationSeconds),
       );
     }
+  }
+
+  /// Handle blink reminder timer - shows overlay only if app is visible,
+  /// otherwise shows notification.
+  Future<void> _handleBlinkReminderTimer(int durationSeconds) async {
+    if (PlatformUtils.isDesktop) {
+      final isVisible = await _windowService.isWindowVisibleAndFocused();
+      if (!isVisible) {
+        // App is hidden/minimized - show notification instead of overlay
+        AppLogger.debug('App hidden - showing blink notification instead of overlay');
+        await _notificationService.showBlinkReminder();
+        return;
+      }
+    }
+    triggerBlinkReminder(durationSeconds);
+  }
+
+  /// Handle blank screen timer - shows overlay only if app is visible,
+  /// otherwise shows notification.
+  Future<void> _handleBlankScreenTimer(int durationSeconds) async {
+    if (PlatformUtils.isDesktop) {
+      final isVisible = await _windowService.isWindowVisibleAndFocused();
+      if (!isVisible) {
+        // App is hidden/minimized - show notification instead of overlay
+        AppLogger.debug('App hidden - showing blank screen notification instead of overlay');
+        await _notificationService.showBlankScreenReminder();
+        return;
+      }
+    }
+    triggerBlankScreen(durationSeconds);
   }
 
   void _stopForegroundTimers() {
@@ -132,10 +196,14 @@ class EyeCareProvider extends ChangeNotifier {
     _blankScreenTimer = null;
   }
 
-  /// Trigger blink reminder with full black screen and countdown
+  /// Trigger blink reminder with full black screen and countdown.
   void triggerBlinkReminder(int durationSeconds) {
-    if (_showBlinkOverlay || _showBlankScreen) return; // Prevent overlap
+    if (_showBlinkOverlay || _showBlankScreen) {
+      AppLogger.debug('Skipping blink reminder - overlay already showing');
+      return;
+    }
 
+    AppLogger.info('Triggering blink reminder for $durationSeconds seconds');
     _showBlinkOverlay = true;
     _blinkCountdown = durationSeconds;
     notifyListeners();
@@ -145,16 +213,28 @@ class EyeCareProvider extends ChangeNotifier {
     _notificationService.cancelNotification(BackgroundService.blinkNotificationId);
   }
 
-  /// Dismiss blink overlay
+  /// Dismiss blink overlay.
   void dismissBlinkOverlay() {
+    AppLogger.userAction('Dismiss blink overlay');
     _showBlinkOverlay = false;
     _blinkCountdown = 0;
     notifyListeners();
   }
 
-  /// Trigger longer blank screen rest
+  /// Trigger longer blank screen rest.
+  ///
+  /// Shows a full-screen blank overlay for the specified duration.
+  /// Automatically counts down and dismisses when complete.
   void triggerBlankScreen(int durationSeconds) {
-    if (_showBlinkOverlay || _showBlankScreen) return; // Prevent overlap
+    if (_showBlinkOverlay || _showBlankScreen) {
+      AppLogger.debug('Skipping blank screen - overlay already showing');
+      return;
+    }
+
+    AppLogger.info('Triggering blank screen for $durationSeconds seconds');
+
+    // Cancel any existing countdown timer to prevent leaks
+    _blankScreenCountdownTimer?.cancel();
 
     _showBlankScreen = true;
     _blankScreenCountdown = durationSeconds;
@@ -164,21 +244,27 @@ class EyeCareProvider extends ChangeNotifier {
     // Cancel notification since we're showing the overlay
     _notificationService.cancelNotification(BackgroundService.blankNotificationId);
 
-    // Countdown timer
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    // Countdown timer - tracked to allow proper cleanup
+    _blankScreenCountdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _blankScreenCountdown--;
       notifyListeners();
 
       if (_blankScreenCountdown <= 0) {
         timer.cancel();
+        _blankScreenCountdownTimer = null;
         _showBlankScreen = false;
         notifyListeners();
         onBlankScreenEnd?.call();
+        AppLogger.debug('Blank screen completed');
       }
     });
   }
 
+  /// Dismiss the blank screen early.
   void dismissBlankScreen() {
+    AppLogger.userAction('Dismiss blank screen');
+    _blankScreenCountdownTimer?.cancel();
+    _blankScreenCountdownTimer = null;
     _showBlankScreen = false;
     _blankScreenCountdown = 0;
     notifyListeners();
@@ -191,7 +277,10 @@ class EyeCareProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    AppLogger.serviceDispose('EyeCareProvider');
     _stopForegroundTimers();
+    _blankScreenCountdownTimer?.cancel();
+    _blankScreenCountdownTimer = null;
     _backgroundService.dispose();
     super.dispose();
   }

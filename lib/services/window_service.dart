@@ -16,6 +16,19 @@ class WindowService with WindowListener {
 
   bool get isAlwaysOnTop => _isAlwaysOnTop;
   bool get isInOverlayMode => _isInOverlayMode;
+  bool get isInitialized => _isInitialized;
+
+  /// Check if the window is currently visible and focused (not hidden/minimized).
+  /// On non-desktop platforms, always returns true.
+  Future<bool> isWindowVisibleAndFocused() async {
+    if (!PlatformUtils.isDesktop) return true;
+    if (!_isInitialized) return false;
+
+    final isVisible = await windowManager.isVisible();
+    final isMinimized = await windowManager.isMinimized();
+
+    return isVisible && !isMinimized;
+  }
 
   Future<void> initialize() async {
     if (!PlatformUtils.isDesktop || _isInitialized) return;

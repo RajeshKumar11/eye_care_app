@@ -1,22 +1,47 @@
-/// Eye Care App Settings Model
+/// Eye Care App Settings Model.
+///
+/// Immutable configuration for eye care reminders and features.
+/// Use [copyWith] to create modified copies.
+/// Use [fromJson] to deserialize from storage (with safe defaults).
+/// Use [fromPreset] to apply predefined configurations.
 class EyeCareSettings {
+  /// Whether the app should continue running in the background.
   final bool backgroundModeEnabled;
+
+  /// Interval between blink reminders in seconds.
   final int blinkIntervalSeconds;
+
+  /// Duration of blank screen in seconds.
   final int blankScreenDurationSeconds;
+
+  /// Whether text-to-speech is enabled for reminders.
   final bool ttsEnabled;
+
+  /// Whether blink reminders are enabled.
   final bool blinkReminderEnabled;
+
+  /// Whether blank screen feature is enabled.
   final bool blankScreenEnabled;
+
+  /// Interval between blank screen reminders in minutes.
   final int blankScreenIntervalMinutes;
+
+  /// Currently active preset configuration.
   final EyeCarePreset activePreset;
+
+  /// Default values for settings.
+  static const int defaultBlinkInterval = 15;
+  static const int defaultBlankDuration = 3;
+  static const int defaultBlankInterval = 30;
 
   const EyeCareSettings({
     this.backgroundModeEnabled = true,
-    this.blinkIntervalSeconds = 15,
-    this.blankScreenDurationSeconds = 3,
+    this.blinkIntervalSeconds = defaultBlinkInterval,
+    this.blankScreenDurationSeconds = defaultBlankDuration,
     this.ttsEnabled = true,
     this.blinkReminderEnabled = true,
     this.blankScreenEnabled = true,
-    this.blankScreenIntervalMinutes = 30,
+    this.blankScreenIntervalMinutes = defaultBlankInterval,
     this.activePreset = EyeCarePreset.normal,
   });
 
@@ -55,17 +80,42 @@ class EyeCareSettings {
     };
   }
 
+  /// Creates settings from JSON with safe type checking.
+  ///
+  /// All fields use defaults if missing or invalid type.
+  /// Invalid preset indices default to [EyeCarePreset.normal].
   factory EyeCareSettings.fromJson(Map<String, dynamic> json) {
     return EyeCareSettings(
-      backgroundModeEnabled: json['backgroundModeEnabled'] ?? true,
-      blinkIntervalSeconds: json['blinkIntervalSeconds'] ?? 15,
-      blankScreenDurationSeconds: json['blankScreenDurationSeconds'] ?? 3,
-      ttsEnabled: json['ttsEnabled'] ?? true,
-      blinkReminderEnabled: json['blinkReminderEnabled'] ?? true,
-      blankScreenEnabled: json['blankScreenEnabled'] ?? true,
-      blankScreenIntervalMinutes: json['blankScreenIntervalMinutes'] ?? 30,
-      activePreset: EyeCarePreset.values[json['activePreset'] ?? 1],
+      backgroundModeEnabled: _safeBool(json['backgroundModeEnabled'], true),
+      blinkIntervalSeconds: _safeInt(json['blinkIntervalSeconds'], defaultBlinkInterval),
+      blankScreenDurationSeconds: _safeInt(json['blankScreenDurationSeconds'], defaultBlankDuration),
+      ttsEnabled: _safeBool(json['ttsEnabled'], true),
+      blinkReminderEnabled: _safeBool(json['blinkReminderEnabled'], true),
+      blankScreenEnabled: _safeBool(json['blankScreenEnabled'], true),
+      blankScreenIntervalMinutes: _safeInt(json['blankScreenIntervalMinutes'], defaultBlankInterval),
+      activePreset: _safePreset(json['activePreset']),
     );
+  }
+
+  /// Safely parse bool from JSON with fallback.
+  static bool _safeBool(dynamic value, bool defaultValue) {
+    if (value is bool) return value;
+    return defaultValue;
+  }
+
+  /// Safely parse int from JSON with fallback.
+  static int _safeInt(dynamic value, int defaultValue) {
+    if (value is int) return value;
+    if (value is double) return value.toInt();
+    return defaultValue;
+  }
+
+  /// Safely parse preset from JSON with bounds checking.
+  static EyeCarePreset _safePreset(dynamic value) {
+    if (value is int && value >= 0 && value < EyeCarePreset.values.length) {
+      return EyeCarePreset.values[value];
+    }
+    return EyeCarePreset.normal; // Default preset
   }
 
   /// Apply preset settings

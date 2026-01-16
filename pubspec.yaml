@@ -40,7 +40,13 @@ dependencies:
   # System overlay window to show on top of other apps
   flutter_overlay_window: ^0.4.5
 
+  # Logging for debugging and error tracking
+  logger: ^2.4.0
+
 dev_dependencies:
+  # Mocking for tests
+  mockito: ^5.4.4
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0

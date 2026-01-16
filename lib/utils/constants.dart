@@ -9,7 +9,7 @@ class AppConstants {
   // Default Settings
   static const int defaultBlinkInterval = 15;
   static const int minBlinkInterval = 5;
-  static const int maxBlinkInterval = 60;
+  static const int maxBlinkInterval = 600;
 
   static const int defaultBlankDuration = 3;
   static const int minBlankDuration = 1;

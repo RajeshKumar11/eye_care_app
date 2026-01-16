@@ -83,6 +83,90 @@ void main() {
       expect(settings.activePreset, EyeCarePreset.normal);
     });
 
+    test('fromJson handles invalid type for bool (string)', () {
+      final json = {
+        'backgroundModeEnabled': 'true', // string instead of bool
+        'ttsEnabled': 'false',
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should use defaults when type is wrong
+      expect(settings.backgroundModeEnabled, true);
+      expect(settings.ttsEnabled, true);
+    });
+
+    test('fromJson handles invalid type for int (string)', () {
+      final json = {
+        'blinkIntervalSeconds': '20', // string instead of int
+        'blankScreenDurationSeconds': '5',
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should use defaults when type is wrong
+      expect(settings.blinkIntervalSeconds, EyeCareSettings.defaultBlinkInterval);
+      expect(settings.blankScreenDurationSeconds, EyeCareSettings.defaultBlankDuration);
+    });
+
+    test('fromJson handles double values for int fields', () {
+      final json = {
+        'blinkIntervalSeconds': 20.5, // double instead of int
+        'blankScreenDurationSeconds': 5.9,
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should truncate doubles to int
+      expect(settings.blinkIntervalSeconds, 20);
+      expect(settings.blankScreenDurationSeconds, 5);
+    });
+
+    test('fromJson handles out of bounds preset index', () {
+      final json = {
+        'activePreset': 99, // Invalid index
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should default to normal preset
+      expect(settings.activePreset, EyeCarePreset.normal);
+    });
+
+    test('fromJson handles negative preset index', () {
+      final json = {
+        'activePreset': -1, // Negative index
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should default to normal preset
+      expect(settings.activePreset, EyeCarePreset.normal);
+    });
+
+    test('fromJson handles null preset value', () {
+      final json = {
+        'activePreset': null,
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should default to normal preset
+      expect(settings.activePreset, EyeCarePreset.normal);
+    });
+
+    test('fromJson handles string preset value', () {
+      final json = {
+        'activePreset': 'normal', // string instead of int
+      };
+      final settings = EyeCareSettings.fromJson(json);
+
+      // Should default to normal preset
+      expect(settings.activePreset, EyeCarePreset.normal);
+    });
+
+    test('fromJson handles all valid preset indices', () {
+      for (var i = 0; i < EyeCarePreset.values.length; i++) {
+        final json = {'activePreset': i};
+        final settings = EyeCareSettings.fromJson(json);
+        expect(settings.activePreset, EyeCarePreset.values[i]);
+      }
+    });
+
     test('fromJson and toJson are symmetric', () {
       const original = EyeCareSettings(
         backgroundModeEnabled: false,
