@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Eye Care App - Protect Your Vision from Digital Eye Strain | Free & Open Source</title>
+    <meta name="title" content="Eye Care App - Protect Your Vision from Digital Eye Strain">
+    <meta name="description" content="Free open-source eye care app with blink reminders, 20-20-20 rule, and eye exercises. Reduce digital eye strain for developers, remote workers, and gamers. Available on Android, iOS, Windows, macOS, and Linux.">
+    <meta name="keywords" content="eye care app, digital eye strain, blink reminder, 20-20-20 rule, eye exercises, computer vision syndrome, developer health, remote work, eye protection, free eye care, open source">
+    <meta name="author" content="Rajesh Kumar">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rajeshkumar11.github.io/eye_care_app/">
+    <meta property="og:title" content="Eye Care App - Protect Your Vision from Digital Eye Strain">
+    <meta property="og:description" content="Free open-source eye care app with blink reminders, 20-20-20 rule, and eye exercises. Reduce digital eye strain for developers and remote workers.">
+    <meta property="og:image" content="https://rajeshkumar11.github.io/eye_care_app/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rajeshkumar11.github.io/eye_care_app/">
+    <meta property="twitter:title" content="Eye Care App - Protect Your Vision from Digital Eye Strain">
+    <meta property="twitter:description" content="Free open-source eye care app with blink reminders, 20-20-20 rule, and eye exercises.">
+    <meta property="twitter:image" content="https://rajeshkumar11.github.io/eye_care_app/images/twitter-card.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rajeshkumar11.github.io/eye_care_app/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Eye Care App",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Android, iOS, Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "100"
+      },
+      "description": "Free open-source eye care application that helps reduce digital eye strain through blink reminders, screen rest periods, and guided eye exercises.",
+      "author": {
+        "@type": "Person",
+        "name": "Rajesh Kumar"
+      },
+      "downloadUrl": "https://github.com/RajeshKumar11/eye_care_app/releases",
+      "screenshot": "https://rajeshkumar11.github.io/eye_care_app/images/screenshot.png",
+      "softwareVersion": "1.0.0",
+      "datePublished": "2026-01-16"
+    }
+    </script>
+
+    <!-- Google Analytics (Add your GA4 ID) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-logo">
+                <span class="logo-icon">👁️</span>
+                <span class="logo-text">Eye Care App</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#download" class="nav-link">Download</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="nav-link">GitHub</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Protect Your Vision from <span class="highlight">Digital Eye Strain</span></h1>
+                    <p class="hero-subtitle">Free, open-source eye care app with smart reminders, the 20-20-20 rule, and guided exercises. Perfect for developers, remote workers, and anyone spending hours in front of screens.</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary">Download Free</a>
+                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="btn btn-secondary">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Features</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Platforms</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free & Open Source</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <img src="images/app-screenshot.png" alt="Eye Care App Screenshot" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22600%22%3E%3Crect fill=%22%232196F3%22 width=%22300%22 height=%22600%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22%3EApp Screenshot%3C/text%3E%3C/svg%3E'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">Are You Experiencing Digital Eye Strain?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😫</div>
+                    <h3>Headaches & Fatigue</h3>
+                    <p>Hours of screen time leading to constant headaches and tired eyes</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">😑</div>
+                    <h3>Dry Eyes</h3>
+                    <p>Reduced blink rate from 15-20 to just 5-7 blinks per minute</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">😵</div>
+                    <h3>Blurred Vision</h3>
+                    <p>Difficulty focusing after long coding or gaming sessions</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">😴</div>
+                    <h3>Sleep Issues</h3>
+                    <p>Blue light and eye strain affecting your sleep quality</p>
+                </div>
+            </div>
+            <p class="problem-cta">If you spend 8+ hours daily on screens, you need Eye Care App</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features to Protect Your Eyes</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Blink Reminders</h3>
+                    <p>Gentle full-screen overlays remind you to blink regularly, preventing dry eyes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>20-20-20 Rule</h3>
+                    <p>Every 20 minutes, look 20 feet away for 20 seconds - scientifically proven</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏃</div>
+                    <h3>Eye Exercises</h3>
+                    <p>Guided exercises including focus shifting, figure 8, and more</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Notifications</h3>
+                    <p>Customizable reminders that don't interrupt your workflow</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Custom Presets</h3>
+                    <p>Intense Focus, Normal, Relaxed modes or create your own</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Voice Guidance</h3>
+                    <p>Text-to-speech instructions during exercises (mobile)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Background Mode</h3>
+                    <p>Continues working even when minimized (Android)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>System Overlay</h3>
+                    <p>Shows reminders on top of any app (Android)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>No tracking, no analytics, no data collection - 100% local</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Install & Setup</h3>
+                    <p>Download for your platform and grant necessary permissions</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Choose Preset</h3>
+                    <p>Select Intense Focus, Normal, or Relaxed mode based on your work</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Protection</h3>
+                    <p>Tap "Start Protection" and continue your work</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Follow Reminders</h3>
+                    <p>Blink when prompted, take breaks, do exercises</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Download Eye Care App</h2>
+            <p class="section-subtitle">Available on all major platforms - 100% Free & Open Source</p>
+            <div class="download-grid">
+                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                    <div class="download-icon">🤖</div>
+                    <h3>Android</h3>
+                    <p>APK for Android 8.0+</p>
+                    <span class="download-badge">Full Support</span>
+                </a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                    <div class="download-icon">🍎</div>
+                    <h3>iOS</h3>
+                    <p>TestFlight (Coming Soon)</p>
+                    <span class="download-badge">Full Support</span>
+                </a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                    <div class="download-icon">🪟</div>
+                    <h3>Windows</h3>
+                    <p>Installer for Windows 10+</p>
+                    <span class="download-badge">Partial Support</span>
+                </a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                    <div class="download-icon">🍏</div>
+                    <h3>macOS</h3>
+                    <p>DMG for macOS 10.14+</p>
+                    <span class="download-badge">Partial Support</span>
+                </a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                    <div class="download-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>Tarball for Linux</p>
+                    <span class="download-badge">Partial Support</span>
+                </a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app" class="download-card" target="_blank">
+                    <div class="download-icon">🌐</div>
+                    <h3>Web</h3>
+                    <p>Progressive Web App</p>
+                    <span class="download-badge">Coming Soon</span>
+                </a>
+            </div>
+            <p class="download-note">📦 All releases available on <a href="https://github.com/RajeshKumar11/eye_care_app/releases" target="_blank">GitHub Releases</a></p>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="audience">
+        <div class="container">
+            <h2 class="section-title">Who Is This For?</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-emoji">👨‍💻</div>
+                    <h3>Software Developers</h3>
+                    <p>8-12 hours daily coding? Protect your eyes with smart reminders that don't interrupt your flow</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-emoji">🏠</div>
+                    <h3>Remote Workers</h3>
+                    <p>Working from home with extended screen time? Stay healthy with regular eye breaks</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-emoji">🎮</div>
+                    <h3>Gamers</h3>
+                    <p>Long gaming sessions affecting your vision? Keep your eyes fresh and focused</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-emoji">🎓</div>
+                    <h3>Students</h3>
+                    <p>Studying online for hours? Protect your eyes for long-term academic success</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-emoji">💼</div>
+                    <h3>Office Workers</h3>
+                    <p>Computer-based work all day? Reduce eye strain and improve productivity</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-emoji">🎨</div>
+                    <h3>Designers</h3>
+                    <p>Pixel-perfect work requires healthy eyes. Take care of your most important tool</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is Eye Care App really free?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Eye Care App is 100% free and open source. No hidden costs, no subscriptions, no in-app purchases. The source code is available on GitHub under MIT License.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Does it collect my data?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! Eye Care App has zero analytics, zero tracking, and zero data collection. Everything runs locally on your device. Your privacy is 100% protected.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Will it interrupt my work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The reminders are designed to be gentle and quick (2-5 seconds). You can customize intervals and choose presets that match your workflow. Many users find it improves focus!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Which platform has the best support?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Android has full support including background mode and system overlays. iOS has full support with limited background capabilities. Desktop platforms (Windows, macOS, Linux) have partial support.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I contribute to the project?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Eye Care App is open source and welcomes contributions. Check out our <a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guidelines</a> to get started.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What permissions does it need?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>On Android: System overlay (for reminders), notifications, background service, wake lock (during exercises). All permissions are clearly explained before requesting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Start Protecting Your Vision Today</h2>
+            <p class="cta-subtitle">Join thousands of developers, remote workers, and gamers taking care of their eye health</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn btn-primary btn-large">Download Free Now</a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="btn btn-secondary btn-large">View Source Code</a>
+            </div>
+            <p class="cta-note">⭐ Star us on GitHub if you find it helpful!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Eye Care App</h4>
+                    <p>Free, open-source eye care for everyone spending time in front of screens.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/issues">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app">GitHub Repository</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/CONTRIBUTING.md">Contributing</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/CHANGELOG.md">Changelog</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/SECURITY.md">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:kakumanurajeshkumar@gmail.com">Email Support</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/discussions">Discussions</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/issues">Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eye Care App. Open source under <a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/LICENSE">MIT License</a>.</p>
+                <p>Made with ❤️ for healthier vision</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

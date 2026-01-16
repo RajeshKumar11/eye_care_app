@@ -1,0 +1,31 @@
+# robots.txt for Eye Care App Landing Page
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://rajeshkumar11.github.io/eye_care_app/sitemap.xml
+
+# Disallow crawling of certain files/directories if needed
+# Disallow: /private/
+# Disallow: /temp/
+
+# Allow specific crawlers with custom rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
