@@ -38,7 +38,7 @@ dependencies:
   timezone: ^0.9.4
 
   # System overlay window to show on top of other apps
-  flutter_overlay_window: ^0.4.5
+  flutter_overlay_window: ^0.5.0
 
   # Logging for debugging and error tracking
   logger: ^2.4.0
