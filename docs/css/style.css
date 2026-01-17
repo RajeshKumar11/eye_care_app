@@ -445,6 +445,54 @@ body {
     font-weight: 600;
 }
 
+/* Build Instructions */
+.build-instructions {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.build-instructions h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.code-block {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.code-block code {
+    display: block;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.code-block code::before {
+    content: '$ ';
+    color: #6a9955;
+}
+
+.code-block.small {
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.code-block.small code {
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.download-card .code-block {
+    margin-bottom: 0.75rem;
+}
+
 /* Audience Section */
 .audience {
     padding: 4rem 0;

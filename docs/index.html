@@ -59,7 +59,7 @@
         "@type": "Person",
         "name": "Rajesh Kumar"
       },
-      "downloadUrl": "https://github.com/RajeshKumar11/eye_care_app/releases",
+      "downloadUrl": "https://github.com/RajeshKumar11/eye_care_app",
       "screenshot": "https://rajeshkumar11.github.io/eye_care_app/images/screenshot.png",
       "softwareVersion": "1.0.0",
       "datePublished": "2026-01-16"
@@ -93,10 +93,10 @@
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#download" class="nav-link">Download</a></li>
+                <li><a href="#build" class="nav-link">Build</a></li>
                 <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="nav-link">GitHub</a></li>
+                <li><a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
             </ul>
             <div class="nav-toggle" id="navToggle">
                 <span></span>
@@ -114,8 +114,8 @@
                     <h1 class="hero-title">Protect Your Vision from <span class="highlight">Digital Eye Strain</span></h1>
                     <p class="hero-subtitle">Free, open-source eye care app with smart reminders, the 20-20-20 rule, and guided exercises. Perfect for developers, remote workers, and anyone spending hours in front of screens.</p>
                     <div class="hero-buttons">
-                        <a href="#download" class="btn btn-primary">Download Free</a>
-                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="btn btn-secondary">
+                        <a href="#build" class="btn btn-primary">Build from Source</a>
+                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" rel="noopener" class="btn btn-secondary">
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
@@ -262,50 +262,79 @@
         </div>
     </section>
 
-    <!-- Download Section -->
-    <section id="download" class="download">
+    <!-- Build Section -->
+    <section id="build" class="download">
         <div class="container">
-            <h2 class="section-title">Download Eye Care App</h2>
-            <p class="section-subtitle">Available on all major platforms - 100% Free & Open Source</p>
+            <h2 class="section-title">Build from Source</h2>
+            <p class="section-subtitle">Clone the repository and build for your platform - 100% Free & Open Source</p>
+
+            <!-- Clone Instructions -->
+            <div class="build-instructions">
+                <h3>🚀 Quick Start</h3>
+                <div class="code-block">
+                    <code>git clone https://github.com/RajeshKumar11/eye_care_app.git</code>
+                    <code>cd eye_care_app</code>
+                    <code>flutter pub get</code>
+                </div>
+            </div>
+
             <div class="download-grid">
-                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                <div class="download-card">
                     <div class="download-icon">🤖</div>
                     <h3>Android</h3>
-                    <p>APK for Android 8.0+</p>
+                    <p>Android 8.0+ (API 26)</p>
+                    <div class="code-block small">
+                        <code>flutter build apk</code>
+                    </div>
                     <span class="download-badge">Full Support</span>
-                </a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                </div>
+                <div class="download-card">
                     <div class="download-icon">🍎</div>
                     <h3>iOS</h3>
-                    <p>TestFlight (Coming Soon)</p>
+                    <p>Requires Xcode & macOS</p>
+                    <div class="code-block small">
+                        <code>flutter build ios</code>
+                    </div>
                     <span class="download-badge">Full Support</span>
-                </a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                </div>
+                <div class="download-card">
                     <div class="download-icon">🪟</div>
                     <h3>Windows</h3>
-                    <p>Installer for Windows 10+</p>
+                    <p>Windows 10+ with Visual Studio</p>
+                    <div class="code-block small">
+                        <code>flutter build windows</code>
+                    </div>
                     <span class="download-badge">Partial Support</span>
-                </a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                </div>
+                <div class="download-card">
                     <div class="download-icon">🍏</div>
                     <h3>macOS</h3>
-                    <p>DMG for macOS 10.14+</p>
+                    <p>macOS 10.14+ with Xcode</p>
+                    <div class="code-block small">
+                        <code>flutter build macos</code>
+                    </div>
                     <span class="download-badge">Partial Support</span>
-                </a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app/releases" class="download-card" target="_blank">
+                </div>
+                <div class="download-card">
                     <div class="download-icon">🐧</div>
                     <h3>Linux</h3>
-                    <p>Tarball for Linux</p>
+                    <p>Ubuntu/Debian with GTK</p>
+                    <div class="code-block small">
+                        <code>flutter build linux</code>
+                    </div>
                     <span class="download-badge">Partial Support</span>
-                </a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app" class="download-card" target="_blank">
+                </div>
+                <div class="download-card">
                     <div class="download-icon">🌐</div>
                     <h3>Web</h3>
-                    <p>Progressive Web App</p>
-                    <span class="download-badge">Coming Soon</span>
-                </a>
+                    <p>Any modern browser</p>
+                    <div class="code-block small">
+                        <code>flutter build web</code>
+                    </div>
+                    <span class="download-badge">Experimental</span>
+                </div>
             </div>
-            <p class="download-note">📦 All releases available on <a href="https://github.com/RajeshKumar11/eye_care_app/releases" target="_blank">GitHub Releases</a></p>
+            <p class="download-note">📖 See <a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/BUILD_INSTRUCTIONS.md" target="_blank" rel="noopener">BUILD_INSTRUCTIONS.md</a> for detailed setup guide</p>
         </div>
     </section>
 
@@ -395,7 +424,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! Eye Care App is open source and welcomes contributions. Check out our <a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guidelines</a> to get started.</p>
+                        <p>Absolutely! Eye Care App is open source and welcomes contributions. Check out our <a href="https://github.com/RajeshKumar11/eye_care_app/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guidelines</a> to get started.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -415,10 +444,10 @@
     <section class="cta">
         <div class="container">
             <h2 class="cta-title">Start Protecting Your Vision Today</h2>
-            <p class="cta-subtitle">Join thousands of developers, remote workers, and gamers taking care of their eye health</p>
+            <p class="cta-subtitle">Join developers, remote workers, and gamers taking care of their eye health</p>
             <div class="cta-buttons">
-                <a href="#download" class="btn btn-primary btn-large">Download Free Now</a>
-                <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" class="btn btn-secondary btn-large">View Source Code</a>
+                <a href="#build" class="btn btn-primary btn-large">Build from Source</a>
+                <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" rel="noopener" class="btn btn-secondary btn-large">View Source Code</a>
             </div>
             <p class="cta-note">⭐ Star us on GitHub if you find it helpful!</p>
         </div>
@@ -432,7 +461,7 @@
                     <h4>Eye Care App</h4>
                     <p>Free, open-source eye care for everyone spending time in front of screens.</p>
                     <div class="social-links">
-                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" aria-label="GitHub">
+                        <a href="https://github.com/RajeshKumar11/eye_care_app" target="_blank" rel="noopener" aria-label="GitHub">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
@@ -443,9 +472,9 @@
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#download">Download</a></li>
+                        <li><a href="#build">Build</a></li>
                         <li><a href="#faq">FAQ</a></li>
-                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/issues">Report Issue</a></li>
+                        <li><a href="https://github.com/RajeshKumar11/eye_care_app/issues" target="_blank" rel="noopener">Report Issue</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
