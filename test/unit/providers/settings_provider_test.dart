@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:eye_care_app/models/settings_model.dart';
 import 'package:eye_care_app/utils/constants.dart';
