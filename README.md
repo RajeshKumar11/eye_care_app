@@ -231,6 +231,21 @@ The app requires the following permissions on Android:
    - **Figure 8**: Trace a figure 8 pattern with your eyes
 3. Follow the on-screen and voice guidance
 
+### 💡 Usage Tips (When "Stay Protected" is Running)
+
+#### Desktop (Windows, macOS, Linux)
+For the best experience when protection is active:
+- **Position the app window in the bottom-right corner** of your screen
+- **Resize the window to show only the header** (minimize the height)
+- This keeps the app accessible without blocking your main workspace
+- Reminders will still appear on top when triggered
+
+#### Mobile (Android, iOS)
+With "Stay Protected" enabled:
+- **Tap anywhere on the blink reminder screen** to dismiss it after reading
+- The reminder will auto-dismiss after the timer, but tapping allows quicker dismissal
+- On Android, the overlay appears on top of any app - tap to dismiss and return to your work
+
 ## Troubleshooting
 
 ### Android: Overlay not showing
